@@ -28,7 +28,7 @@ add_instance = [
         az ="2a"
         volume_type = "gp3"
         volume_size = "8"
-        user_data = "sudo yum update -y | sudo yum install -y httpd| sudo systemctl enable httpd --now"
+        user_data = "sudo yum update -y;sudo yum install httpd -y;sudo systemctl enable httpd --now;"
     },
     {
         name = "web-2c"
@@ -42,7 +42,7 @@ add_instance = [
         az ="2c"
         volume_type = "gp3"
         volume_size = "8"
-        user_data = "sudo yum update -y | sudo yum install -y httpd| sudo systemctl enable httpd --now "
+        user_data = "sudo yum update -y ; sudo yum install -y httpd; sudo systemctl enable httpd --now; "
     },
     {
         name = "was-2a"
@@ -56,7 +56,7 @@ add_instance = [
         az ="2a"
         volume_type = "gp3"
         volume_size = "8"
-        user_data = "sudo yum update -y | sudo yum install -y php "
+        user_data = "sudo yum update -y ; sudo yum install -y php; "
     },
     {
         name = "was-2c"
@@ -70,7 +70,7 @@ add_instance = [
         az ="2c"
         volume_type = "gp3"
         volume_size = "8"
-        user_data = "sudo yum update -y | sudo yum install -y php "
+        user_data = "sudo yum update -y ; sudo yum install -y php; "
     }
     ]
 
