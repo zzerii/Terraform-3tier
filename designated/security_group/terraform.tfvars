@@ -12,7 +12,7 @@ rules_cidr =[
         from_port = 22
         to_port = 22
         protocol = "tcp"
-        cidr_blocks = ["220.71.58.172/32"]
+        cidr_blocks = ["123.123.123.123/24"]
     },
     {
         security_group_id = "web_elb"
