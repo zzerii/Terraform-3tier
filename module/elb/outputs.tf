@@ -10,11 +10,15 @@
 # output "name2" {
 #     value = data.aws_subnets.was_sub.ids
 # }
-output "web" {
-    value = aws_alb.web_alb.id
+# output "web" {
+#     value = aws_alb.web_alb.id
   
-}
-output "was" {
-    value = aws_alb.was_alb.id
+# }
+# output "was" {
+#     value = aws_alb.was_alb.id
   
+# }
+
+output "web_ins" {
+    value = data.aws_instances.web_instance.ids
 }

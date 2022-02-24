@@ -1,17 +1,9 @@
-# output "instance_id" {
-#   value = aws_instance.instances.*.id
-# }
 
-# output "name" {
-#   value = local.sg_list
-# }
 
-# output "name" {
-#     value = data.sg.id
-  
-# }
+output "sub" {
+    value = data.aws_subnets.subnet_list.ids
+}
 
-# output "name2" {
-#     value = data.aws_subnet.subnet.id
-  
-# }
+output "sg" {
+    value = data.aws_security_groups.sg_list
+}

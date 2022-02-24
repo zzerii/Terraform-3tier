@@ -29,13 +29,13 @@ resource "aws_alb_target_group" "was_alb_tg" {
 }
 resource "aws_alb_target_group_attachment" "was_alb_tg_ec2_0" {
   target_group_arn = aws_alb_target_group.was_alb_tg.arn
-  target_id       = "${var.was_alb_tg.target_id[0]}"
+  target_id       = "${data.aws_instances.was_instance.ids[0]}"
   port             = 80
   
 }
 resource "aws_alb_target_group_attachment" "was_alb_tg_ec2_1" {
   target_group_arn = aws_alb_target_group.was_alb_tg.arn
-  target_id       = "${var.was_alb_tg.target_id[1]}"
+  target_id       = "${data.aws_instances.was_instance.ids[1]}"
   port             = 80
   
 }

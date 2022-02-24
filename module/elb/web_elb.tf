@@ -30,13 +30,13 @@ resource "aws_alb_target_group" "web_alb_tg" {
 
 resource "aws_alb_target_group_attachment" "web_alb_tg_ec2_1" {
   target_group_arn = aws_alb_target_group.web_alb_tg.arn
-  target_id        = "${var.web_alb_tg.target_id[0]}"
+  target_id        = "${data.aws_instances.web_instance.ids[0]}"
   port             = 80
   
 }
 resource "aws_alb_target_group_attachment" "web_alb_tg_ec2_2" {
   target_group_arn = aws_alb_target_group.web_alb_tg.arn
-  target_id        = "${var.web_alb_tg.target_id[1]}"
+  target_id        = "${data.aws_instances.web_instance.ids[1]}"
   port             = 80
   
 }

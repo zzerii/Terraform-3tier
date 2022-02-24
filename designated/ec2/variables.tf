@@ -9,12 +9,13 @@ variable "prefix" {
 }
 
 variable "add_instance" {
-    type = map(object({
+    type = list(object({
+        name = string
         instance_type = string
         key_name = string
         iam_instance_profile = string
         subnet_id = string
-        security_groups = list(string)
+        security_groups = string
         ebs_optimized = bool
         associate_public_ip_address = bool
         az = string
@@ -22,7 +23,6 @@ variable "add_instance" {
         volume_size = string
         user_data = string
     }))
-    default = {}
 }
 
 variable "tags" {
