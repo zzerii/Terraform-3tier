@@ -7,10 +7,10 @@ variable "prefix" {
     type = string
     default = ""
 }
-# variable "vpc_name" {
-#     type = string
-#     default = ""
-# }
+variable "vpc_name" {
+    type = string
+    default = ""
+}
 
 variable "vpc_id" {
     type = string
@@ -30,6 +30,7 @@ variable "web_alb" {
         internal = bool
         security_groups = list(string)
         subnets = list(string)
+
         enable_deletion_protection = bool
     })
     default = {
@@ -51,17 +52,8 @@ variable "web_alb_tg" {
         path                = string
         healthy_threshold   = number
         unhealthy_threshold = number
+        target_id = list(string)
     })
-    default = {
-      healthy_threshold = 1
-      interval = 1
-      name = ""
-      path = ""
-      port = 1
-      protocol = ""
-      unhealthy_threshold = 1
-      vpc_name = ""
-    }
 }
 
 variable "web_alb_listener" {
@@ -72,13 +64,6 @@ variable "web_alb_listener" {
         target_group_arn = string
         type = string
     })
-    default = {
-      load_balancer_arn = ""
-      port = 1
-      protocol = ""
-      target_group_arn = ""
-      type = ""
-    }
 }
 
 ###############################
@@ -91,15 +76,9 @@ variable "was_alb" {
         internal = bool
         security_groups = list(string)
         subnets = list(string)
+
         enable_deletion_protection = bool
     })
-    default = {
-      enable_deletion_protection = false
-      internal = false
-      name = ""
-      security_groups = [ "" ]
-      subnets = [ "" ]
-    }
 }
 
 variable "was_alb_tg" {
@@ -112,17 +91,8 @@ variable "was_alb_tg" {
         path                = string
         healthy_threshold   = number
         unhealthy_threshold = number
+        target_id = list(string)
     })
-    default = {
-      healthy_threshold = 1
-      interval = 1
-      name = ""
-      path = ""
-      port = 1
-      protocol = ""
-      unhealthy_threshold = 1
-      vpc_name = ""
-    }
 }
 
 variable "was_alb_listener" {

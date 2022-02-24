@@ -25,15 +25,24 @@ variable "rules_list" {
     default = []
 }
 
-variable "rules" {
+variable "rules_cidr" {
   type = list(object({
+    security_group_id = string
     type = string
     from_port = string
     to_port = string
     protocol = string
-    cidr_blocks = list(string)
-    ipv6_cidr_blocks = list(string)
-    source_security_group_id = list(string)   
+    cidr_blocks = list(string) 
+  }))
+}
+variable "rules_sg" {
+  type = list(object({
+    security_group_id = string
+    type = string
+    from_port = string
+    to_port = string
+    protocol = string
+    source_security_group_id = string   
   }))
 }
 

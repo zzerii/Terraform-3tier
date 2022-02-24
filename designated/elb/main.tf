@@ -1,5 +1,5 @@
 module "elb" {
-    source = "./elb_module"
+    source = "../../module/elb"
 
     region = var.region
     prefix = var.prefix

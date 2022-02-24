@@ -15,7 +15,7 @@ param  = {
 subnet_group = {
         dev_sub = {
             sub_group_name  = "sub-group"
-            sub_name = ["dev-pri-db-0","dev-pri-db-1"]
+            sub_name = ["dev-pri-db-2a","dev-pri-db-2c"]
             }
     }
 

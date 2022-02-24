@@ -1,8 +1,8 @@
 resource "aws_alb" "was_alb" {
   name            = "${var.was_alb.name}"
   internal        = "${var.was_alb.internal}"
-  security_groups = "${var.was_alb.security_groups}"
-  subnets         = "${var.was_alb.subnets}"
+  security_groups = data.aws_security_groups.was_sg.ids
+  subnets         = data.aws_subnets.was_sub.ids
 
   enable_deletion_protection = "${var.was_alb.enable_deletion_protection}"
 
@@ -26,6 +26,18 @@ resource "aws_alb_target_group" "was_alb_tg" {
   }
 
   tags = { Name = "${var.was_alb_tg.name}" }
+}
+resource "aws_alb_target_group_attachment" "was_alb_tg_ec2_0" {
+  target_group_arn = aws_alb_target_group.was_alb_tg.arn
+  target_id       = "${var.was_alb_tg.target_id[0]}"
+  port             = 80
+  
+}
+resource "aws_alb_target_group_attachment" "was_alb_tg_ec2_1" {
+  target_group_arn = aws_alb_target_group.was_alb_tg.arn
+  target_id       = "${var.was_alb_tg.target_id[1]}"
+  port             = 80
+  
 }
 
 

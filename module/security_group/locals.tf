@@ -1,3 +1,4 @@
-# locals {
-#     id_map = zipmap("${var.rules_list}", "${data.aws_security_groups.sg_list}")
-# }
+locals {
+    id_map = zipmap("${var.rules_list}", "${var.sg_id}")
+}
+

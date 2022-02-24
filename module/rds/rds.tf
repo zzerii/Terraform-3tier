@@ -19,8 +19,7 @@ resource "aws_db_instance" "devdb" {
   db_subnet_group_name = "${values(var.db_instance)[count.index].db_subnet_group_name}"
   publicly_accessible = "${values(var.db_instance)[count.index].publicly_accessible}"
   port = "${values(var.db_instance)[count.index].port}"
-  vpc_security_group_ids =["sg-0f148a79614a32779"]
-#############################################data에서 가져오기 실패
+  vpc_security_group_ids = data.aws_security_groups.sg_list.ids
 
 
   name                 = "${values(var.db_instance)[count.index].name}"

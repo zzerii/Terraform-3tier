@@ -3,90 +3,76 @@ prefix  = "dev"
 
 vpc_name = "dev-vpc-test"
 
-rules_list=["bastion', 'web_elb", "web", "was_elb", "was", "db"]
+rules_list=["bastion", "web_elb", "web", "was_elb", "was", "db"]
 
-rules =[
+rules_cidr =[
     {
-        name = "bastion"
+        security_group_id = "bastion"
         type = "ingress"
         from_port = 22
         to_port = 22
         protocol = "tcp"
         cidr_blocks = ["220.71.58.172/32"]
-        ipv6_cidr_blocks = []
-        source_security_group_id = []
     },
     {
-        name = "web_elb"
+        security_group_id = "web_elb"
         type = "ingress"
         from_port = 80
         to_port = 80
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
-        ipv6_cidr_blocks = []
-        source_security_group_id = []
-    },
+    }
+]
+
+rules_sg = [
     {
-        name = "web"
+        security_group_id = "web"
         type = "ingress"
         from_port = 80
         to_port = 80
         protocol = "tcp"
-        cidr_blocks = []
-        ipv6_cidr_blocks = []
-        source_security_group_id = ["web_elb"]
+        source_security_group_id = "web_elb"
     },
     {
-        name = "web"
+        security_group_id = "web"
         type = "ingress"
         from_port = 22
         to_port = 22
         protocol = "tcp"
-        cidr_blocks = []
-        ipv6_cidr_blocks = []
-        source_security_group_id = ["bastion"]
+        source_security_group_id = "bastion"
     },
     {
-        name = "was_elb"
+        security_group_id = "was_elb"
         type = "ingress"
         from_port = 80
         to_port = 80
         protocol = "tcp"
-        cidr_blocks = ["0.0.0.0/0"]
-        ipv6_cidr_blocks = []
-        source_security_group_id = ["web"]
+        source_security_group_id = "web"
     },
     {
-        name = "was"
+        security_group_id = "was"
         type = "ingress"
         from_port = 80
         to_port = 80
         protocol = "tcp"
-        cidr_blocks = []
-        ipv6_cidr_blocks = []
-        source_security_group_id = ["was_elb"]
+        source_security_group_id = "was_elb"
     },
     {
-        name = "was"
+        security_group_id = "was"
         type = "ingress"
         from_port = 22
         to_port = 22
         protocol = "tcp"
-        cidr_blocks = []
-        ipv6_cidr_blocks = []
-        source_security_group_id = ["bastion"]
+        source_security_group_id = "bastion"
     },
     {
-        name = "db"
+        security_group_id = "db"
         type = "ingress"
         from_port = 3306
         to_port = 3306
         protocol = "tcp"
-        cidr_blocks = []
-        ipv6_cidr_blocks = []
-        source_security_group_id = ["was"]
+        source_security_group_id = "was"
     }
-
 
 ]
 
