@@ -1,4 +1,3 @@
-
 resource "aws_db_instance" "devdb" {
   count = length(keys(var.db_instance))
  
